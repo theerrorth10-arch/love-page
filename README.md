@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #ffd1dc, #ffe6f0);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* การ์ดเต็มจอแนวตั้ง */
+.card {
+    width: 100%;
+    max-width: 420px;
+    height: 100vh;
+    background: white;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* กล่องสื่อ */
+.media-box {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* รูป + วิดีโอ เต็มแนวตั้ง */
+.media-box img,
+.media-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* เด้ง */
+.bounce {
+    animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.15); }
+    60% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+/* ข้อความ */
+.text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ff4d6d;
+    margin: 10px 0;
+    display: none;
+}
+
+/* ปุ่ม */
+button {
+    width: 90%;
+    margin-bottom: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ff9eb5, #ff6f91);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* หัวใจ */
+.heart {
+    position: absolute;
+    bottom: 120px;
+    font-size: 24px;
+    animation: floatUp 2.2s ease forwards;
+    pointer-events: none;
+}
+
+/* ประกาย */
+.sparkle {
+    position: absolute;
+    font-size: 16px;
+    animation: sparkle 1.2s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-220px) scale(1.6); }
+}
+
+@keyframes sparkle {
+    0% { opacity: 1; transform: scale(0.5); }
+    100% { opacity: 0; transform: scale(1.8); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+    <div class="media-box">
+        <img id="loveImage" src="data:image/jpeg;base64,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" alt="Love Image">
+
+        <video id="loveVideo"
+               src="i love you.mp4"
+               style="display:none;"
+               playsinline
+               muted>
+        </video>
+    </div>
+
+    <div class="text" id="loveText">I Love You 💖</div>
+    <button onclick="playLove()">กดสิ</button>
+</div>
+
+<audio id="loveSound" src="ooooooo.mp3"></audio>
+
+<script>
+const hearts = ["❤️","💖","💘","💝","💗","💕","💞","💓"];
+const sparkles = ["✨","⭐","🌟"];
+
+function playLove() {
+    const img   = document.getElementById("loveImage");
+    const video = document.getElementById("loveVideo");
+    const text  = document.getElementById("loveText");
+    const sound = document.getElementById("loveSound");
+    const card  = document.getElementById("card");
+
+    img.style.display = "none";
+    video.style.display = "block";
+
+    video.currentTime = 0;
+    sound.currentTime = 0;
+
+    video.classList.add("bounce");
+    video.play();
+    sound.play();
+
+    text.style.display = "block";
+
+    for (let i = 0; i < 10; i++) createHeart(card);
+    for (let i = 0; i < 8; i++) createSparkle(card);
+
+    video.onended = () => {
+        video.pause();
+        video.style.display = "none";
+        img.style.display = "block";
+        video.classList.remove("bounce");
+        text.style.display = "none";
+    };
+}
+
+function createHeart(parent) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    h.style.left = Math.random() * 80 + 10 + "%";
+    parent.appendChild(h);
+    setTimeout(() => h.remove(), 2300);
+}
+
+function createSparkle(parent) {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.innerHTML = sparkles[Math.floor(Math.random() * sparkles.length)];
+    s.style.left = Math.random() * 90 + "%";
+    s.style.top  = Math.random() * 70 + "%";
+    parent.appendChild(s);
+    setTimeout(() => s.remove(), 1200);
+}
+</script>
+
+</body>
+</html>
